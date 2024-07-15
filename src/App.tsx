@@ -18,12 +18,12 @@ const App: React.FC = () => {
       <div className="flex flex-col min-h-screen">
         <Header toggleSidebar={toggleSidebar} />
         <div className="flex flex-1">
-          <Sidebar isSidebarOpen={isSidebarOpen} />
-          <div className="flex-1 p-4">
+          <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+          <div className={`flex-1 p-4 ${isSidebarOpen ? 'ml-64 md:ml-0' : 'ml-0'}`}>
             <Routes>
-              <Route path="/blog" element={<div>Main Content for Blog</div>} />
-              <Route path="/docs" element={<div>Main Content for Docs</div>} />
-              <Route path="/about" element={<div>Main Content for About</div>} />
+              <Route path="/blog" element={<div>Blog Content</div>} />
+              <Route path="/docs" element={<div>Docs Content</div>} />
+              <Route path="/about" element={<div>About Content</div>} />
               <Route path="/" element={<MainContent />} />
             </Routes>
           </div>
