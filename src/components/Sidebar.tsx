@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  isSidebarOpen: boolean;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen }) => {
   return (
-    <aside className="bg-gray-200 w-64 min-h-screen p-4">
+    <aside className={`bg-gray-200 w-64 min-h-screen p-4 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 ease-in-out`}>
       <h2 className="text-xl mb-4">InvestUtil</h2>
       <nav>
         <ul className="space-y-2">

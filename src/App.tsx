@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
@@ -7,18 +7,26 @@ import Footer from './components/Footer';
 import './index.css';
 
 const App: React.FC = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        <Header />
+        <Header toggleSidebar={toggleSidebar} />
         <div className="flex flex-1">
-          <Sidebar />
-          <Routes>
-            <Route path="/blog" element={<div>Main Content for Blog</div>} />
-            <Route path="/docs" element={<div>Main Content for Docs</div>} />
-            <Route path="/about" element={<div>Main Content for About</div>} />
-            <Route path="/" element={<MainContent />} />
-          </Routes>
+          <Sidebar isSidebarOpen={isSidebarOpen} />
+          <div className="flex-1 p-4">
+            <Routes>
+              <Route path="/blog" element={<div>Main Content for Blog</div>} />
+              <Route path="/docs" element={<div>Main Content for Docs</div>} />
+              <Route path="/about" element={<div>Main Content for About</div>} />
+              <Route path="/" element={<MainContent />} />
+            </Routes>
+          </div>
         </div>
         <Footer />
       </div>
