@@ -8,18 +8,29 @@ import './index.css';
 
 const App: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+    if (!isSidebarOpen && isNavOpen) {
+      setIsNavOpen(false);
+    }
+  };
+
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+    if (!isNavOpen && isSidebarOpen) {
+      setIsSidebarOpen(false);
+    }
   };
 
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        <Header toggleSidebar={toggleSidebar} />
+        <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} isNavOpen={isNavOpen} toggleNav={toggleNav} />
         <div className="flex flex-1">
-          <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-          <div className={`flex-1 p-4 ${isSidebarOpen ? 'ml-64 md:ml-0' : 'ml-0'}`}>
+          <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} isNavOpen={isNavOpen} />
+          <div className={`flex-1 p-4 ${isSidebarOpen ? 'ml-48' : ''}`}>
             <Routes>
               <Route path="/blog" element={<div>Blog Content</div>} />
               <Route path="/docs" element={<div>Docs Content</div>} />
