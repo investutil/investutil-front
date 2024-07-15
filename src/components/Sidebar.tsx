@@ -1,17 +1,19 @@
 import React from 'react';
-import './Sidebar.css';
+import { Link } from 'react-router-dom';
 
 const Sidebar: React.FC = () => {
   return (
-    <div className="sidebar">
-      <h2>InvestUtil</h2>
-      <ul>
-        <li>Global Market Open Times</li>
-        <li>World Clock</li>
-        <li>Financial Market Holidays</li>
-        <li>Financial Report Analysis Tools</li>
-      </ul>
-    </div>
+    <aside className="bg-gray-200 w-64 min-h-screen p-4">
+      <h2 className="text-xl mb-4">InvestUtil</h2>
+      <nav>
+        <ul className="space-y-2">
+          <li><Link to="/market-open-times" className="hover:underline">Global Market Open Times</Link></li>
+          <li><Link to="/world-clock" className="hover:underline">World Clock</Link></li>
+          <li><Link to="/holidays" className="hover:underline">Financial Market Holidays</Link></li>
+          <li><Link to="/report-analysis" className="hover:underline">Financial Report Analysis Tools</Link></li>
+        </ul>
+      </nav>
+    </aside>
   );
 };
 
