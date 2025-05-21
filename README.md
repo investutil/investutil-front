@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+# React + Vite Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is built with [Vite](https://vitejs.dev/) and [React](https://reactjs.org/) for a fast and modern development experience.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+### Install dependencies
 
-### `npm start`
+```bash
+yarn install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Start development server
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+yarn dev
+```
 
-### `npm test`
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Build for production
 
-### `npm run build`
+```bash
+yarn build
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Preview the production build locally
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+yarn serve
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Environment Variables
 
-### `npm run eject`
+Environment variables should be defined in `.env` files and must start with `VITE_`. For example:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+VITE_API_BASE_URL=https://api.example.com
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Access them in your code using:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```js
+import.meta.env.VITE_API_BASE_URL
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## References
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [Vite Documentation](https://vitejs.dev/)
+- [React Documentation](https://reactjs.org/)
