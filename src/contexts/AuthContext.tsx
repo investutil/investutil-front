@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { authApi } from '../services/api';
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -15,19 +16,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const login = async (email: string, password: string) => {
     try {
-      // TODO: Replace with actual API call
-      // Simulated API call
-      const response = await new Promise((resolve) => {
-        setTimeout(() => {
-          resolve({ 
-            success: true, 
-            user: { email, name: 'User' } 
-          });
-        }, 1000);
-      });
-
+      const response = await authApi.login(email, password);
+      const { token, user } = response;
+      
+      // Store the token
+      localStorage.setItem('token', token);
+      
       setIsAuthenticated(true);
-      setUser(response.user);
+      setUser(user);
     } catch (error) {
       console.error('Login failed:', error);
       throw error;
@@ -35,6 +31,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   const logout = () => {
+    localStorage.removeItem('token');
     setIsAuthenticated(false);
     setUser(null);
   };

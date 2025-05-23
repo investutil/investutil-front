@@ -48,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, isSidebarOpen, isNavOpen
           {isAuthenticated ? (
             <>
               <li className="ml-4">
-                <span className="text-gray-300">Welcome, {user?.name}</span>
+                <span className="text-gray-300">Welcome, {user?.email}</span>
               </li>
               <li>
                 <button onClick={handleLogout} className="hover:underline flex items-center text-red-400">
@@ -57,11 +57,18 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, isSidebarOpen, isNavOpen
               </li>
             </>
           ) : (
-            <li className="ml-4">
-              <Link to="/login" className="hover:underline flex items-center text-green-400">
-                <FontAwesomeIcon icon={faSignInAlt} className="mr-2" /> Login
-              </Link>
-            </li>
+            <>
+              <li className="ml-4">
+                <Link to="/login" className="hover:underline flex items-center text-green-400">
+                  <FontAwesomeIcon icon={faSignInAlt} className="mr-2" /> Login
+                </Link>
+              </li>
+              <li className="ml-4">
+                <Link to="/register" className="hover:underline flex items-center text-blue-400">
+                  <FontAwesomeIcon icon={faSignInAlt} className="mr-2" /> Register
+                </Link>
+              </li>
+            </>
           )}
         </ul>
       </nav>
@@ -89,7 +96,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, isSidebarOpen, isNavOpen
             {isAuthenticated ? (
               <>
                 <li>
-                  <span className="text-gray-300">Welcome, {user?.name}</span>
+                  <span className="text-gray-300">Welcome, {user?.email}</span>
                 </li>
                 <li>
                   <button onClick={handleLogout} className="hover:underline flex items-center text-red-400">
@@ -98,11 +105,18 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, isSidebarOpen, isNavOpen
                 </li>
               </>
             ) : (
-              <li>
-                <Link to="/login" className="hover:underline flex items-center text-green-400" onClick={toggleNav}>
-                  <FontAwesomeIcon icon={faSignInAlt} className="mr-2" /> Login
-                </Link>
-              </li>
+              <>
+                <li>
+                  <Link to="/login" className="hover:underline flex items-center text-green-400" onClick={toggleNav}>
+                    <FontAwesomeIcon icon={faSignInAlt} className="mr-2" /> Login
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/register" className="hover:underline flex items-center text-blue-400" onClick={toggleNav}>
+                    <FontAwesomeIcon icon={faSignInAlt} className="mr-2" /> Register
+                  </Link>
+                </li>
+              </>
             )}
           </ul>
         </div>
