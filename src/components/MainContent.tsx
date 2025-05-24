@@ -4,7 +4,7 @@ const MainContent: React.FC = () => {
   const [marketStatus, setMarketStatus] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:3001/api/market/open')
+    fetch(`${import.meta.env.VITE_API_BASE}/api/market/open`)
       .then(response => response.json())
       .then(data => setMarketStatus(data.market_open ? 'Open' : 'Closed'))
       .catch(error => console.error('Error fetching market status:', error));
@@ -19,5 +19,6 @@ const MainContent: React.FC = () => {
     </div>
   );
 };
+
 
 export default MainContent;
